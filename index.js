@@ -23,12 +23,17 @@ app.post('/charge', async (req, res) => {
 
         const { amount, payment_method } = req.body;
 
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: Math.round(amount * 100),
-            currency: 'usd',
-            payment_method: payment_method,
-            confirm: true
-        });
+      const paymentIntent = await stripe.paymentIntents.create({
+    amount: Math.round(amount * 100),
+    currency: 'usd',
+    payment_method: payment_method,
+    confirm: true,
+
+    automatic_payment_methods: {
+        enabled: true,
+        allow_redirects: 'never'
+    }
+});
 
         res.json({
             success: true,
