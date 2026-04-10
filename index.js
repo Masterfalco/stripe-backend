@@ -26,6 +26,7 @@ const { amount, payment_method, customer_id } = req.body;
     amount: Math.round(amount * 100),
     currency: 'usd',
     payment_method: payment_method,
+    customer: customer_id,      
     confirm: true,
 
     automatic_payment_methods: {
