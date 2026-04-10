@@ -35,10 +35,11 @@ const { amount, payment_method, customer_id } = req.body;
     }
 });
 
-        res.json({
-            success: true,
-            id: paymentIntent.id
-        });
+       res.json({
+    success: true,
+    id: paymentIntent.id,
+    status: paymentIntent.status
+});
 
     } catch (err) {
         res.json({
