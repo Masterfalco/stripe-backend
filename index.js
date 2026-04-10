@@ -21,8 +21,7 @@ CREATE PAYMENT
 app.post('/charge', async (req, res) => {
     try {
 
-        const { amount, payment_method } = req.body;
-
+const { amount, payment_method, customer_id } = req.body;
       const paymentIntent = await stripe.paymentIntents.create({
     amount: Math.round(amount * 100),
     currency: 'usd',
